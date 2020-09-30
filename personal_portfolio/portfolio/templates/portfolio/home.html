@@ -1,0 +1,12 @@
+<h1> Dominik </h1>
+
+{% for project in projects %}
+
+{{ project.title }} <br>
+{{ project.description }} <br>
+<img src="{{ project.image.url }}" height="200" width="auto"> <br>
+{% if project.url %}
+    <a href="{{ project.url }}">LINK</a> <br>
+{% endif %}
+
+{% endfor %}
