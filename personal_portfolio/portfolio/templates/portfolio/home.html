@@ -1,4 +1,9 @@
-<h1> Dominik </h1>
+{% load static %}
+
+<h1> Dominik </h1><br>
+
+<img src="{% static 'portfolio/tree.jpeg' %}"><br>
+<a href="{% static 'portfolio/pdftest1.pdf' %}">TEST PDF</a><br><br>
 
 {% for project in projects %}
 
