@@ -6,20 +6,20 @@
 
     <h1> Blog Dominika </h1><br>
 
-    <a href="{% url 'blog:all_blogs' %}">Blog</a>
-    <br><br>
+    <a href="{% url 'blog:all_blogs' %}">Blog</a><br><br>
 
     <img src="{% static 'portfolio/tree.jpeg' %}"><br>
     <a href="{% static 'portfolio/pdftest1.pdf' %}">TEST PDF</a><br><br>
 
     {% for project in projects %}
 
-    {{ project.title }} <br>
-    {{ project.description }} <br>
-    <img src="{{ project.image.url }}" height="200" width="auto"> <br>
-    {% if project.url %}
-        <a href="{{ project.url }}">LINK</a> <br>
-    {% endif %}
+        {{ project.title }} <br>
+        {{ project.description }} <br>
+        <img src="{{ project.image.url }}" height="200" width="auto"> <br>
+
+        {% if project.url %}
+            <a href="{{ project.url }}">LINK</a> <br>
+        {% endif %}
 
     {% endfor %}
 {% endblock %}
