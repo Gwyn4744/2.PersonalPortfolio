@@ -9,6 +9,7 @@
         <a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
         <h5>{{ blog.date|date:'d.m.Y' }}</h5>
         <p>{{ blog.description|truncatechars:128 }}</p> <br>
+        <hr class="my-4">
 
     {% endfor %}
 

@@ -4,22 +4,75 @@
 
     {% load static %}
 
-    <h1> Blog Dominika </h1><br>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-    <a href="{% url 'blog:all_blogs' %}">Blog</a><br><br>
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 
-    <img src="{% static 'portfolio/tree.jpeg' %}"><br>
-    <a href="{% static 'portfolio/pdftest1.pdf' %}">TEST PDF</a><br><br>
+    <section class="jumbotron py-4 text-center" style="margin-top:40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Dominik Bednarski</h1><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{% static 'portfolio/dbv2.png' %}" width="100%">
+                </div>
+                <div class="col-md-8">
+                    <p class="lead text-muted"><i>"Nobody is gonna hit as hard as LIFE. But it ain't about how hard you hit, it's about how hard you can get hit and keep moving forward. That's how WINNING is done."</i></p>
+                    <div style="justify-content: right; display: flex;"><small class="text-muted" >Sylvester Stallone</small></div><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{% static 'portfolio/pdftest1.pdf' %}" class="btn btn-secondary my-2">CURRICULUM VITAE</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    {% for project in projects %}
+    <hr class="my-4">
 
-        {{ project.title }} <br>
-        {{ project.description }} <br>
-        <img src="{{ project.image.url }}" height="200" width="auto"> <br>
+    <div class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="{{ project.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>{{ project.title }}</b></h5>
+                                <p class="card-text" style="min-height: 100px;">{{ project.description }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    {% if project.url %}
+                                        <div class="btn-group">
+                                            <a href="{{ project.url }}"><button type="button" class="btn btn-primary">Zobacz</button></a>
+                                        </div>
+                                    {% endif %}
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-        {% if project.url %}
-            <a href="{{ project.url }}">LINK</a> <br>
-        {% endif %}
 
-    {% endfor %}
+
 {% endblock %}
