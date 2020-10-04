@@ -29,10 +29,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-4">
                     <img src="{% static 'portfolio/dbv2.png' %}" width="100%">
                 </div>
-                <div class="col-md-8">
+                <div class="col-8">
                     <p class="lead text-muted"><i>"Nobody is gonna hit as hard as LIFE. But it ain't about how hard you hit, it's about how hard you can get hit and keep moving forward. That's how WINNING is done."</i></p>
                     <div style="justify-content: right; display: flex;"><small class="text-muted" >Sylvester Stallone</small></div><br>
                 </div>
@@ -63,7 +63,7 @@
                                             <a href="{{ project.url }}"><button type="button" class="btn btn-primary">Zobacz</button></a>
                                         </div>
                                     {% endif %}
-                                    <small class="text-muted">9 mins</small>
+                                    <small class="text-muted">{{ project.date|date:'d.m.Y' }}</small>
                                 </div>
                             </div>
                         </div>

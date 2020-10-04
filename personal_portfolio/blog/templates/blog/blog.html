@@ -1,16 +1,41 @@
 {% extends 'portfolio/base.html' %}
 {% block content %}
+    {% load static %}
 
     <h2>BLOG</h2><br><br>
     <h2> Dominik has written {{ blogs_count }} blog{{ blogs_count|pluralize }}</h2>
 
     {% for blog in blogs %}
 
-        <a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
-        <h5>{{ blog.date|date:'d.m.Y' }}</h5>
-        <p>{{ blog.description|truncatechars:128 }}</p> <br>
-        <hr class="my-4">
+        <div class="row" style="border: 1px solid rgba(180, 180, 180, 0.2); border-radius: 5px;">
+            <div class="col-12">
+                <img src="{{ blog.image.url }}" width="230px" class="float-left" style="padding: 10px">
+                <a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+                <h5>{{ blog.date|date:'d.m.Y' }}</h5>
+                <p>{{ blog.description|truncatechars:512 }}</p> <br>
+            </div>
+        </div>
+
+        <hr class="my-3">
 
     {% endfor %}
+
+    <form action="{% url 'blog:all_blogs' %}">
+        <ul class="pagination">
+            {% for pages in blogs_pages %}
+                {% if page.0 == forloop.counter0 %}
+                    <li class="page-item"><button class="page-link" type="submit" value="{{ forloop.counter0 }}" name="nr_page">&laquo;</li>
+                {% endif %}
+            {% endfor %}
+            {% for pages in blogs_pages %}
+                <li class="page-item"><button class="page-link" style="{% if page.1 == forloop.counter0%} background-color: dodgerblue; color: white; {% endif %}" type="submit" value="{{ forloop.counter0 }}" name="nr_page">{{ forloop.counter }}</li>
+            {% endfor %}
+            {% for pages in blogs_pages %}
+                {% if page.2 == forloop.counter0 %}
+                    <li class="page-item"><button class="page-link" type="submit" value="{{ forloop.counter0 }}" name="nr_page">&raquo;</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </form>
 
 {% endblock %}
