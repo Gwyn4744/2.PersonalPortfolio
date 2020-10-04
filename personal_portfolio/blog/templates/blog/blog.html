@@ -2,8 +2,8 @@
 {% block content %}
     {% load static %}
 
-    <h2>BLOG</h2><br><br>
-    <h2> Dominik has written {{ blogs_count }} blog{{ blogs_count|pluralize }}</h2>
+    <h2>BLOG</h2><br>
+    <h2> Dominik has written {{ blogs_count }} blog{{ blogs_count|pluralize }}</h2><br>
 
     {% for blog in blogs %}
 
